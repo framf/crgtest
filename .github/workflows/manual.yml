@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Setup App Insatllers
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -8,11 +8,29 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      url:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'URL'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'https://XXX.jamfcloud.com'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      clientID:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'API Client ID'
+        # Default value if no value is explicitly provided
+        default: '13B0FC1F-95B8-47D7-9856-4EA50223200A'
+        # Input has to be provided for the workflow to run
+        required: true
+        # The data type of the input
+        type: string
+      Secret:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'API Client Secret'
+        # Default value if no value is explicitly provided
+        default: 'iamtheonewhopoopsintheurinals'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
@@ -29,4 +47,4 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
+      run: echo "Hello ${{ inputs.url }}"
